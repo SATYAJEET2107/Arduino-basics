@@ -1,0 +1,57 @@
+
+
+
+
+byte encoderPinA = 3;
+byte encoderPinB = 2;
+byte encoderPin1 = 5;
+byte encoderPin2 = 4;
+int pulses = 0;
+int pulses1 = 0;
+
+
+void setup() {
+  pinMode(encoderPinA, INPUT);
+  pinMode(encoderPinB, INPUT);
+  pinMode(encoderPin1, INPUT);
+  pinMode(encoderPin2, INPUT);
+ 
+  Serial.begin(9600);
+
+  attachInterrupt(1, cntPulses, RISING);
+  attachInterrupt(0, cntPulses1, RISING);
+}
+
+void loop() {
+  Serial.print(pulses);
+  Serial.print(" ");
+  Serial.println(pulses1);
+ 
+
+
+
+
+}
+
+void cntPulses() {
+  if (digitalRead(encoderPinA)) {
+    if (digitalRead(encoderPin1)) {
+      pulses++;
+    }
+    else {
+      pulses--;
+    }
+  }
+}
+
+
+void cntPulses1() {
+  if (digitalRead(encoderPinB)) {
+    if (digitalRead(encoderPin2)) {
+      pulses1++;
+    }
+    else {
+      pulses1--;
+    }
+  }
+}

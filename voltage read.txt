@@ -1,0 +1,28 @@
+
+int a,b,c;
+float E1,E2,E3;
+void setup() {
+
+pinMode(A4,INPUT);
+pinMode(A5,INPUT);
+pinMode(A6,INPUT);
+Serial.begin(9600);
+}
+
+void loop() {
+ 
+a=analogRead(A4);
+b=analogRead(A5);
+c=analogRead(A6);
+
+E1=a/0.8484;
+E2=(b/0.45631)-E1;
+E3=(c/0.3707860)-(E1+E2);
+
+Serial.print(E1);
+Serial.print("    ");
+Serial.print(E2);
+Serial.print("    ");
+Serial.print(E3);
+Serial.println("    ");
+}
